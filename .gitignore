@@ -3,6 +3,7 @@ venv/
 .venv/
 env/
 .agents
+*.db
 
 # Configuración local de pyenv
 .python-version

@@ -20,7 +20,6 @@ def create_tables():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 asset_id INTEGER NOT NULL,
                 transaction_date DATE NOT NULL,
-                transaction_type TEXT NOT NULL,
                 quantity REAL NOT NULL,
                 price REAL NOT NULL,
                 FOREIGN KEY (asset_id) REFERENCES assets(id)
