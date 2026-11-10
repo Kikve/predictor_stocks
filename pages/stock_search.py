@@ -27,9 +27,10 @@ df = search_stock(search_string)
 if search_string:
     result = search_stock(search_string)
     st.dataframe(result)
-    values = (result["shortname"] + " (" + result["symbol"] + ")").tolist()
+    values = (result["symbol"]).tolist()
 
-    with st.form("form"):
-        st.selectbox("Stock", options=values)
-        st.date_input("Date", format="DD/MM/YYYY")
-        st.number_input("Quantity", min_value=1)
+    ticker_name = st.selectbox("Stock", options=values)
+    ticker = yf.Ticker(ticker_name)
+    transaction_date = st.date_input("Date", format="YYYY-MM-DD")
+    quantity = st.number_input("Quantity", min_value=1)
+    st.number_input("price", format="%.2f")
