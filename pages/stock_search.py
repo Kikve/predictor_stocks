@@ -4,6 +4,21 @@ import yfinance as yf
 import pandas as pd
 from database import get_connection
 
+
+# main()
+# │
+# ├── render_stock_search()
+# │   └── search_stock()
+# │
+# └── render_transaction_form()
+#     │
+#     ├── get_stock_information()
+#     │
+#     └── register_transaction()
+#         │
+#         ├── get_or_create_asset()
+#         │
+#         └── save_transaction()
 st.set_page_config(page_title="Stock Search", layout="wide")
 
 
@@ -46,6 +61,8 @@ if search_string:
                            " (" + filtered["symbol"].iloc[0] + ")")
             col2.metric("Total", price * quantity)
 
+            # ----------------------------------------------
+            # change to something more specific functions for work with db
             with get_connection() as conn:
                 conn.execute("""
                         INSERT OR IGNORE INTO assets (ticker, company_name)
