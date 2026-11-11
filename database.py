@@ -55,3 +55,17 @@ def save_transaction(
                  )
 
     return None
+
+
+def get_asset(conn: Connection, ticker_name: str, long_name: str, ) -> int:
+    conn.execute("""
+             INSERT OR IGNORE INTO assets (ticker, company_name)
+             VALUES (?, ?)
+             """, (ticker_name, long_name)
+                 )
+    asset_id = conn.execute(
+        """SELECT id FROM assets WHERE ticker = ?""", (
+            ticker_name,)
+    ).fetchone()[0]
+
+    return asset_id
