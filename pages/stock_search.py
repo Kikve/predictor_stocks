@@ -4,21 +4,6 @@ import yfinance as yf
 import pandas as pd
 from database import get_connection
 
-
-# main()
-# │
-# ├── render_stock_search()
-# │   └── search_stock()
-# │
-# └── render_transaction_form()
-#     │
-#     ├── get_stock_information()
-#     │
-#     └── register_transaction()
-#         │
-#         ├── get_or_create_asset()
-#         │
-#         └── save_transaction()
 st.set_page_config(page_title="Stock Search", layout="wide")
 
 

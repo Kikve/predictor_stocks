@@ -75,12 +75,13 @@ def get_or_create_asset(
     return asset_id
 
 
-def create_transaction(ticker_name: str,
-                       longname: str,
-                       transaction_date: date,
-                       quantity: int,
-                       price: float
-                       ) -> None:
+def create_transaction(
+    longname: str,
+    ticker_name: str,
+    transaction_date: date,
+    quantity: int,
+    price: float
+) -> None:
     with get_connection() as conn:
         asset_id: int = get_or_create_asset(conn, ticker_name, longname)
         save_transaction(conn, asset_id, transaction_date, quantity, price)
