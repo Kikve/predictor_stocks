@@ -57,7 +57,11 @@ def save_transaction(
     return None
 
 
-def get_asset(conn: Connection, ticker_name: str, long_name: str, ) -> int:
+def get_or_create_asset(
+        conn: Connection,
+        ticker_name: str,
+        long_name: str,
+) -> int:
     conn.execute("""
              INSERT OR IGNORE INTO assets (ticker, company_name)
              VALUES (?, ?)
