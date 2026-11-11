@@ -1,4 +1,6 @@
 import sqlite3
+from sqlite3 import Connection
+from datetime import date
 
 
 def get_connection():
@@ -25,3 +27,31 @@ def create_tables():
                 FOREIGN KEY (asset_id) REFERENCES assets(id)
             )
         """)
+
+
+def save_transaction(
+        conn: Connection,
+        asset_id: int,
+        transaction_date: date,
+        quantity: int,
+        price: float
+) -> None:
+    """
+    ask for connection and return none if applied
+    """
+    conn.execute("""
+                    INSERT INTO transactions (
+                    asset_id,
+                    transaction_date,
+                    quantity,
+                    price
+                    )
+                    VALUES (?,?,?,?)
+                    """,
+                 (asset_id,
+                  transaction_date.isoformat(),
+                  quantity,
+                  price)
+                 )
+
+    return None
