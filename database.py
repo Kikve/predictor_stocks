@@ -1,6 +1,7 @@
 import sqlite3
 from sqlite3 import Connection
 from datetime import date
+import pandas as pd
 
 
 def get_connection():
@@ -87,3 +88,13 @@ def create_transaction(
         save_transaction(conn, asset_id, transaction_date, quantity, price)
 
         return None
+
+
+def get_transactions():
+    with get_connection() as conn:
+        transactions = pd.read_sql_query(
+            """
+            SELECT * FROM transactions
+            """, conn
+        )
+        return transactions

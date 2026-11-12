@@ -3,7 +3,7 @@ from stock_data import stock_search
 from pandas import DataFrame
 import pandas as pd
 from datetime import date
-from database import create_transaction
+from database import create_transaction, get_transactions
 
 
 def render_stock_search() -> DataFrame:
@@ -107,3 +107,7 @@ def display_transaction_summary(
         with col3:
             st.caption("Price per share")
             st.write(f"${price:,.2f}")
+
+
+def render_transactions_history() -> None:
+    st.dataframe(get_transactions())
