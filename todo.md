@@ -7,9 +7,10 @@
   - [X] get transactions from db
   - [X] transaction with asset info
   - [ ] specific format on strealit for each column
-- [ ] Solicitar precio vigente.
+- [ ] Solicitar precio vigente de todos los assets
   - [X] sumatoria de stocks y precio innvertido en compra a partir de transactions
     `sumarize assets`
+  - [ ] Obtener precio de un asset
 - [ ] Validar que las cantidades y los precios sean mayores que cero.
 - [ ] Validar entradas numéricas y evitar divisiones entre cero.
 - [ ] delete transactions
