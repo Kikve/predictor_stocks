@@ -94,7 +94,11 @@ def get_transactions():
     with get_connection() as conn:
         transactions = pd.read_sql_query(
             """
-            SELECT * FROM transactions
+            SELECT t.transaction_date, a.company_name,
+            a.ticker, t.quantity, t.price
+            FROM transactions AS t
+            INNER JOIN assets AS a
+            ON t.asset_id = a.id
             """, conn
         )
         return transactions

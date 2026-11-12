@@ -110,4 +110,4 @@ def display_transaction_summary(
 
 
 def render_transactions_history() -> None:
-    st.dataframe(get_transactions())
+    st.dataframe(get_transactions(), hide_index=True)

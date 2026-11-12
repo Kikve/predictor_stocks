@@ -5,7 +5,7 @@
 - [X] Registrar precio de compra.
 - [ ] transactions history
   - [X] get transactions from db
-  - [ ] transaction with asset info
+  - [X] transaction with asset info
 - [ ] Solicitar precio vigente.
 - [ ] Validar que las cantidades y los precios sean mayores que cero.
 - [ ] Validar entradas numéricas y evitar divisiones entre cero.
