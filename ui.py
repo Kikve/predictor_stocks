@@ -109,5 +109,9 @@ def display_transaction_summary(
             st.write(f"${price:,.2f}")
 
 
-def render_transactions_history() -> None:
-    st.dataframe(get_transactions(), hide_index=True)
+def render_transactions_history(transactions: DataFrame) -> None:
+    """
+    render transactions with specific format
+    still not written
+    """
+    st.dataframe(transactions, hide_index=True)
