@@ -10,7 +10,8 @@
 - [ ] Solicitar precio vigente de todos los assets
   - [X] sumatoria de stocks y precio innvertido en compra a partir de transactions
     `sumarize assets`
-  - [ ] Obtener precio de un asset
+  - [X] Obtener precio de un asset
+    `current price`
 - [ ] Validar que las cantidades y los precios sean mayores que cero.
 - [ ] Validar entradas numéricas y evitar divisiones entre cero.
 - [ ] delete transactions

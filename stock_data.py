@@ -15,3 +15,10 @@ def stock_search(search_str: str, max_results=10) -> DataFrame:
     except Exception as e:
         print(f"Error: {e}")
         return pd.DataFrame()
+
+
+def current_price(symbol: str) -> float:
+    """
+    returns the current prince of the stock
+    """
+    return yf.Ticker(symbol).fast_info["lastPrice"]
