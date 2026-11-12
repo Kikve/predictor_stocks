@@ -7,6 +7,10 @@ from database import create_transaction
 
 
 def render_stock_search() -> DataFrame:
+    """
+        render a component which allows to search an stock
+        returns Dataframe with searched data
+    """
     search_string = st.text_input("Search company")
 
     if not search_string:
@@ -18,10 +22,27 @@ def render_stock_search() -> DataFrame:
     return data
 
 
-def render_transaction_form(data: DataFrame) -> None:
+def render_transaction_form(
+    data: DataFrame,
+    name="longname",
+    identifier="symbol"
+) -> None:
+    """
+    render an form which allows to register an stock transaction
 
-    # values = (result["symbol"]).tolist()
-    stock_options = (data["longname"] + " (" + data["symbol"] + ")").tolist()
+    [data] -> Dataframe with stocks available to choose
+    name column name which is identified name of the stock
+    identifier column name of symbol of the stock
+    """
+    if data.empty:
+        st.info("Search for a company")
+        return None
+
+    stock_options = [
+        f"{n} ({i})"
+        for n, i in zip(data[name], data[identifier])
+    ]
+    # stock_options = (data[name] + " (" + data[identifier] + ")").tolist()
 
     with st.form("Register a transaction"):
         stock_selected: str = st.selectbox("Stock", options=stock_options)
@@ -34,16 +55,16 @@ def render_transaction_form(data: DataFrame) -> None:
     if submitted:
         line_selected = data.iloc[index_selected]
 
-        transaction = {
-            line_selected["longname"],
-            line_selected["symbol"],
+        transaction = [
+            line_selected[name],
+            line_selected[identifier],
             transaction_date,
             quantity,
             price
-        }
+        ]
 
-        create_transaction(transaction)
-        display_transaction_summary(transaction)
+        create_transaction(*transaction)
+        display_transaction_summary(*transaction)
 
         st.success("Registered")
 
@@ -57,7 +78,33 @@ def display_transaction_summary(
 
 
 ) -> None:
-    col1, col2 = st.columns(2)
-    col1.subheader(f"{stock_name} ({symbol})")
-    st.text(transaction_date)
-    col2.metric("Total", price * quantity)
+
+    with st.container(border=True):
+
+        st.subheader("Transaction Summary")
+
+        col1, col2 = st.columns([2, 1])
+
+        with col1:
+            st.caption("Stock")
+            st.write(f"{stock_name} ({symbol})")
+
+        with col2:
+            st.caption("Total amount")
+            st.subheader(f"${price * quantity:,.2f}")
+
+        st.divider()
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.caption("Transaction date")
+            st.write(transaction_date.strftime("%b %d, %Y"))
+
+        with col2:
+            st.caption("Quantity")
+            st.write(f"{quantity:,}")
+
+        with col3:
+            st.caption("Price per share")
+            st.write(f"${price:,.2f}")
