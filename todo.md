@@ -3,10 +3,11 @@
 - [X] Registrar nombre del activo y ticker.
 - [X] Registrar cantidad de títulos.
 - [X] Registrar precio de compra.
+- [ ] transactions history
+  - [ ] get transactions from db
 - [ ] Solicitar precio vigente.
 - [ ] Validar que las cantidades y los precios sean mayores que cero.
 - [ ] Validar entradas numéricas y evitar divisiones entre cero.
-- [ ] transactions history
 - [ ] delete transactions
 - [ ] Pie chart
 
