@@ -42,7 +42,6 @@ def render_transaction_form(
         f"{n} ({i})"
         for n, i in zip(data[name], data[identifier])
     ]
-    # stock_options = (data[name] + " (" + data[identifier] + ")").tolist()
 
     with st.form("Register a transaction"):
         stock_selected: str = st.selectbox("Stock", options=stock_options)
