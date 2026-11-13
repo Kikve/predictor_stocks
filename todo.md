@@ -7,15 +7,20 @@
   - [X] get transactions from db
   - [X] transaction with asset info
   - [ ] specific format on strealit for each column
-- [ ] Solicitar precio vigente de todos los assets
+- [X] Solicitar precio vigente de todos los assets
   - [X] sumatoria de stocks y precio innvertido en compra a partir de transactions
     `sumarize assets`
   - [X] Obtener precio de un asset
     `current price`
+- [ ] reescribir funciones que obtengan datos del exterior. 
+  - [ ] yfinance
+  - [ ] database
+  - [ ] ui
 - [ ] Validar que las cantidades y los precios sean mayores que cero.
 - [ ] Validar entradas numéricas y evitar divisiones entre cero.
 - [ ] delete transactions
 - [ ] Pie chart
+
 
 ## 2. Cálculos por activo
 
